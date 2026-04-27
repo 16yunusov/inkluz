@@ -1,0 +1,10 @@
+# Render.com – Node.js server (frontend + API bitta portda)
+services:
+  - type: web
+    name: taste-of-uzbekistan
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production

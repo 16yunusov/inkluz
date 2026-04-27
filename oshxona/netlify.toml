@@ -1,0 +1,8 @@
+# Netlify – Taste of Uzbekistan statik sayt
+
+[build]
+  publish = "."
+  command = "echo Deploy"
+
+[build.environment]
+  NODE_VERSION = "18"

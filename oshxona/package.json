@@ -1,0 +1,14 @@
+{
+  "name": "taste-of-uzbekistan",
+  "version": "1.0.0",
+  "description": "Taste of Uzbekistan – milliy taomlar restorani veb-sayti va admin panel. Hostga chiqarish tayyor.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
+

@@ -1,0 +1,16 @@
+Taste of Uzbekistan – saytni ishga tushirish
+============================================
+
+1) Terminalda (yoki CMD/PowerShell):
+   cd C:\Users\User\Desktop\oshxona
+   npm start
+
+   Yoki: start.bat faylini ikki marta bosing (ochiladi va serverni ishlatadi).
+
+2) Brauzerda oching:
+   http://localhost:4000          – asosiy sayt
+   http://localhost:4000/admin.html – admin panel
+
+3) To'xtatish: terminalda Ctrl+C
+
+Agar "npm start" ishlamasa: avval "npm install" ni ishga tushiring.

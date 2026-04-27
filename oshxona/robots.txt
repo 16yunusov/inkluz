@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Admin sahifasini qidiruvda ko‘rinmasligini xohlasangiz, quyidagi qatorni qo‘shing:
+# Disallow: /admin.html
+
+Sitemap: https://YOUR-DOMAIN.com/sitemap.xml

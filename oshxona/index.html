@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Taste of Uzbekistan – Milliy taomlar restorani</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Taste of Uzbekistan – Haqqoniy milliy taomlar, plov, lag‘mon, manti. Yetkazib beramiz."
+    />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%230f172a' width='32' height='32' rx='6'/%3E%3Ctext x='16' y='22' font-size='18' fill='%23f97316' text-anchor='middle' font-family='system-ui'%3EUz%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Manrope:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-theme="light">
+    <div class="page-transition"></div>
+
+    <header class="site-header glass-panel">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="brand-mark">
+            <span class="brand-cup"></span>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">Taste of Uzbekistan</span>
+            <span class="brand-subtitle" data-i18n="brand_subtitle">Milliy taomlar</span>
+          </div>
+        </div>
+
+        <nav class="main-nav" aria-label="Asosiy menyu">
+          <a href="#hero" data-i18n="nav_home">Bosh sahifa</a>
+          <a href="#about" data-i18n="nav_about">Biz haqimizda</a>
+          <a href="#features" data-i18n="nav_features">Afzalliklar</a>
+          <a href="#menu" data-i18n="nav_menu">Menyu</a>
+          <a href="#gallery" data-i18n="nav_gallery">Galereya</a>
+          <a href="#reviews" data-i18n="nav_reviews">Sharhlar</a>
+          <a href="#location" data-i18n="nav_location">Manzil</a>
+          <a href="./admin.html" data-i18n="nav_admin">Admin</a>
+        </nav>
+
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Menyuni ochish" aria-expanded="false" aria-controls="mobileNav">
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+        </button>
+
+        <div class="header-actions">
+          <button class="icon-button" id="themeToggle" aria-label="Tun/kun rejimi" type="button">
+            <span class="icon-moon"></span>
+          </button>
+          <div class="lang-switcher" role="group" aria-label="Til">
+            <button type="button" class="lang-btn active" data-lang="uz" aria-pressed="true">UZ</button>
+            <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RUS</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobil menyu">
+      <a href="#hero" data-i18n="nav_home">Bosh sahifa</a>
+      <a href="#about" data-i18n="nav_about">Biz haqimizda</a>
+      <a href="#features" data-i18n="nav_features">Afzalliklar</a>
+      <a href="#menu" data-i18n="nav_menu">Menyu</a>
+      <a href="#gallery" data-i18n="nav_gallery">Galereya</a>
+      <a href="#reviews" data-i18n="nav_reviews">Sharhlar</a>
+      <a href="#location" data-i18n="nav_location">Manzil</a>
+      <a href="./admin.html" data-i18n="nav_admin">Admin</a>
+    </nav>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-content reveal">
+            <p class="hero-kicker" data-i18n="hero_kicker">Premium milliy taomlar</p>
+            <h1 class="hero-title">
+              <span class="accent" data-i18n="hero_title_accent">Haqqoniy milliy taomlar.</span> <span data-i18n="hero_title_rest">To‘g‘ridan-to‘g‘ri uyingizga.</span>
+            </h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">
+              Taste of Uzbekistan sizga plov, lag‘mon, manti va boshqa sevimli milliy taomlarni zamonaviy, qulay onlayn yetkazib berish orqali taqdim etadi.
+            </p>
+            <div class="hero-cta">
+              <a href="#menu" class="btn btn-primary" data-i18n="hero_cta_order">Taom buyurtma qilish</a>
+              <a href="#menu" class="btn btn-ghost" data-i18n="hero_cta_menu">Menyuni ko‘rish</a>
+            </div>
+            <div class="hero-meta">
+              <div>
+                <span class="hero-meta-heading" data-i18n="hero_meta_hours">Har kuni ochiq</span>
+                <span class="hero-meta-text">08:00 AM – 10:00 PM</span>
+              </div>
+              <div>
+                <span class="hero-meta-heading" data-i18n="hero_meta_address">Manzil</span>
+                <span class="hero-meta-text" data-i18n="hero_meta_address_val">Aurora tumani, markaz</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal">
+            <div class="hero-orbit">
+              <div class="hero-dish-3d" aria-hidden="true">
+                <div class="dish-plate"></div>
+                <div class="dish-mound"></div>
+                <div class="dish-glow"></div>
+                <div class="dish-shadow"></div>
+              </div>
+              <div class="hero-orbit-card hero-orbit-card-1 glass-panel">
+                <span class="orbit-label" data-i18n="orbit_1_label">Milliy taomlar</span>
+                <span class="orbit-sub" data-i18n="orbit_1_sub">Plov, lag‘mon, manti</span>
+              </div>
+              <div class="hero-orbit-card hero-orbit-card-2 glass-panel">
+                <span class="orbit-label" data-i18n="orbit_2_label">Haqqoniy ta’m</span>
+                <span class="orbit-sub" data-i18n="orbit_2_sub">An’anaviy retsept</span>
+              </div>
+              <div class="hero-orbit-card hero-orbit-card-3 glass-panel">
+                <span class="orbit-label" data-i18n="orbit_3_label">Tez yetkazish</span>
+                <span class="orbit-sub" data-i18n="orbit_3_sub">Shaharning har joyiga</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="section" id="about">
+        <div class="container split-grid">
+          <div class="image-frame reveal">
+            <div class="image-layer image-layer-bg"></div>
+            <div class="image-layer image-layer-main">
+              <div class="image-placeholder">
+                <span data-i18n="about_placeholder">Barista ish jarayonida</span>
+              </div>
+            </div>
+          </div>
+          <div class="section-content reveal">
+            <p class="section-kicker" data-i18n="about_kicker">Bizning hikoya</p>
+            <h2 class="section-title" data-i18n="about_title">Qahvasevarlar uchun maskan.</h2>
+            <p class="section-text" data-i18n="about_p1">
+              Aurora Coffee House sokin, oltin on – birinchi qultumdan boshlangan odatimizdan tug‘ilgan. Biz dunyoning kichik fermer xo‘jaliklaridan xarakterga ega donlarni tanlab, har bir qovurish va tayyorlash bosqichiga e’tibor bilan yondashamiz.
+            </p>
+            <p class="section-text" data-i18n="about_p2">
+              Bizning ishtiyoqimiz – dunyoning turli burchaklaridan tanlab olingan donlardan mukammal qahva chashkasini yaratish. Ichkariga kiring, sekinlashin va hid, musiqa hamda yorug‘lik sizni o‘rab olsin.
+            </p>
+            <div class="about-stats">
+              <div class="stat">
+                <span class="stat-number">25+</span>
+                <span class="stat-label" data-i18n="about_stat1">Mamlakat donlari</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">10k+</span>
+                <span class="stat-label" data-i18n="about_stat2">Mamnun mehmonlar</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">5.0</span>
+                <span class="stat-label" data-i18n="about_stat3">O‘rtacha baho</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES 3D -->
+      <section class="section" id="features">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker" data-i18n="features_kicker">Taste of Uzbekistan</p>
+            <h2 class="section-title" data-i18n="features_title">Har luqmada milliy ta’m.</h2>
+          </div>
+          <div class="features-grid">
+            <article class="feature-card reveal">
+              <div class="feature-icon feature-icon-beans"></div>
+              <h3 data-i18n="feat1_title">Yangi qovurilgan donlar</h3>
+              <p data-i18n="feat1_p">Halol manbalardan olingan, kichik partiyalarda qovurilgan donlar, bosh qovuruvchimiz tomonidan tanlangan totib ko‘rish notalari bilan.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="feature-icon feature-icon-dessert"></div>
+              <h3 data-i18n="feat2_title">Qo‘lda tayyorlangan desertlar</h3>
+              <p data-i18n="feat2_p">Har kuni ertalab oshxonamizda yangi pishiriladigan, qandolat uslubidagi desertlar qahvangiz uchun mukammal jo‘r.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="feature-icon feature-icon-cozy"></div>
+              <h3 data-i18n="feat3_title">Qulay muhit</h3>
+              <p data-i18n="feat3_p">Yumshoq yorug‘lik, ehtiyotkorlik bilan tanlangan musiqa va uzoq suhbatlar uchun mo‘ljallangan o‘rindiqlar.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="feature-icon feature-icon-service"></div>
+              <h3 data-i18n="feat4_title">Tez xizmat</h3>
+              <p data-i18n="feat4_p">Onlayn buyurtma va qulay jarayon ichimligingiz siz tayyor bo‘lganda hozir bo‘lishini ta’minlaydi.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- MENU -->
+      <section class="section" id="menu">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker" data-i18n="menu_kicker">Menyular</p>
+            <h2 class="section-title" data-i18n="menu_title">Haqqoniy o‘zbek taomlari.</h2>
+          </div>
+
+          <div class="menu-layout">
+            <aside class="menu-categories reveal">
+              <button class="menu-category active" data-category="plov" data-i18n="cat_plov">Plov</button>
+              <button class="menu-category" data-category="lagman" data-i18n="cat_lagman">Lag‘mon</button>
+              <button class="menu-category" data-category="manti" data-i18n="cat_manti">Manti</button>
+              <button class="menu-category" data-category="shashlik" data-i18n="cat_shashlik">Shashlik</button>
+              <button class="menu-category" data-category="somsa" data-i18n="cat_somsa">Somsa</button>
+              <button class="menu-category" data-category="salad" data-i18n="cat_salad">Salatlar</button>
+              <button class="menu-category" data-category="drink" data-i18n="cat_drink">Ichimliklar</button>
+
+              <div class="menu-board-preview glass-panel">
+                <div class="menu-board-image">
+                  <span data-i18n="menu_board">Menyu doskasi</span>
+                </div>
+                <p class="menu-board-text" data-i18n="menu_board_text">
+                  Minimalistik, zamonaviy doska – mavsumiy maxsus takliflar aks etadi.
+                </p>
+              </div>
+            </aside>
+
+            <div class="menu-items-grid" id="menuItems"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+      <section class="section" id="gallery">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker" data-i18n="gallery_kicker">Detallarda go‘zallik</p>
+            <h2 class="section-title" data-i18n="gallery_title">Aurora muhitidan lavhalar.</h2>
+          </div>
+          <div class="gallery-grid">
+            <div class="gallery-item reveal">
+              <div class="gallery-placeholder">
+                <span data-i18n="gallery_1">Imzoli pour-over</span>
+              </div>
+            </div>
+            <div class="gallery-item tall reveal">
+              <div class="gallery-placeholder">
+                <span data-i18n="gallery_2">Kafe ichki ko‘rinishi</span>
+              </div>
+            </div>
+            <div class="gallery-item reveal">
+              <div class="gallery-placeholder">
+                <span data-i18n="gallery_3">Bar ortida barista</span>
+              </div>
+            </div>
+            <div class="gallery-item wide reveal">
+              <div class="gallery-placeholder">
+                <span data-i18n="gallery_4">Desertlar tanlovi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REVIEWS -->
+      <section class="section" id="reviews">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker" data-i18n="reviews_kicker">Mehmonlar fikri</p>
+            <h2 class="section-title" data-i18n="reviews_title">Biz haqimizda izohlar.</h2>
+          </div>
+          <div class="reviews-grid">
+            <article class="review-card glass-panel reveal">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text" data-i18n="review_1_text">"Shahardagi eng mazali qahva! Ajoyib muhit."</p>
+              <p class="review-author" data-i18n="review_1_author">— Alex</p>
+            </article>
+            <article class="review-card glass-panel reveal">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text" data-i18n="review_2_text">"Juda chiroyli joy va nihoyatda mazali desertlar."</p>
+              <p class="review-author" data-i18n="review_2_author">— Sarah</p>
+            </article>
+            <article class="review-card glass-panel reveal">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text" data-i18n="review_3_text">"Shahar shovqinidan qochish uchun eng qulay maskan, espressosi ajoyib."</p>
+              <p class="review-author" data-i18n="review_3_author">— Daniel</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOCATION & CONTACT -->
+      <section class="section" id="location">
+        <div class="container split-grid">
+          <div class="section-content reveal">
+            <p class="section-kicker" data-i18n="location_kicker">Bizga tashrif buyuring</p>
+            <h2 class="section-title">Aurora Coffee House’ni toping.</h2>
+            <p class="section-text" data-i18n="location_p">
+              Aurora tumanining yuragida joylashgan qahvaxonamiz markaziy bekatdan bir necha daqiqalik piyoda yo‘l.
+            </p>
+            <div class="location-details">
+              <div>
+                <h3 data-i18n="location_addr">Manzil</h3>
+                <p>123 Aurora Lane, Downtown</p>
+              </div>
+              <div>
+                <h3 data-i18n="location_hours">Ish vaqti</h3>
+                <p data-i18n="location_hours_val">Har kuni ochiq</p>
+                <p>08:00 AM – 10:00 PM</p>
+              </div>
+            </div>
+            <div class="map-embed glass-panel">
+              <iframe
+                id="mapFrame"
+                title="Taste of Uzbekistan manzil"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9556510153169!3d-37.81732797975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3AAuroraCoffeeHouse!2sAurora%20Coffee%20House!5e0!3m2!1sen!2s!4v1700000000000"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="section-content reveal" id="contactSection">
+            <p class="section-kicker" data-i18n="contact_kicker">Buyurtmalar uchun aloqa</p>
+            <h2 class="section-title" data-i18n="contact_title">Telefon yoki messenjer orqali buyurtma bering.</h2>
+            <p class="section-text" data-i18n="contact_p">
+              Taom buyurtma qilish uchun bizga qo‘ng‘iroq qiling yoki WhatsApp va Telegram orqali yozing. Operatorlarimiz sizga menyudan tanlashda yordam beradi va yetkazib berishni tasdiqlaydi.
+            </p>
+
+            <div class="about-stats" style="margin-top: 1.4rem;">
+              <div class="stat">
+                <span class="stat-number" data-i18n="contact_phone">Telefon</span>
+                <span class="stat-label">+998 90 000 00 00</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">WhatsApp</span>
+                <span class="stat-label">+998 90 000 00 00</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">Telegram</span>
+                <span class="stat-label">@tasteofuzbekistan</span>
+              </div>
+            </div>
+
+            <div class="hero-cta" style="margin-top: 1.6rem;">
+              <a href="tel:+998900000000" class="btn btn-primary" data-i18n="contact_btn_call">Qo‘ng‘iroq qilish</a>
+              <a href="https://wa.me/998900000000" class="btn btn-ghost" data-i18n="contact_btn_wa">WhatsApp orqali yozish</a>
+            </div>
+
+            <p class="checkout-helper" data-i18n="contact_delivery">
+              Yetkazib berish: 30–45 daqiqa ichida, shahar bo‘ylab. $20 dan yuqori buyurtmalar uchun yetkazib berish bepul.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="brand">
+            <div class="brand-mark small">
+              <span class="brand-cup"></span>
+            </div>
+            <div class="brand-text">
+              <span class="brand-title" data-i18n="footer_brand_title">Taste of Uzbekistan</span>
+              <span class="brand-subtitle" data-i18n="footer_brand_subtitle">Milliy taomlar</span>
+            </div>
+          </div>
+          <p class="footer-text" data-i18n="footer_tagline">
+            Har bir detali e’tibor bilan yaratilgan zamonaviy, nafis qahvaxona.
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer_contact">Aloqa</h3>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram" class="social-icon">IG</a>
+            <a href="#" aria-label="Facebook" class="social-icon">FB</a>
+            <a href="#" aria-label="TikTok" class="social-icon">TT</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> <span data-i18n="footer_copyright">Taste of Uzbekistan. Barcha huquqlar himoyalangan.</span></span>
+      </div>
+    </footer>
+
+    <script src="./not.js"></script>
+  </body>
+</html>
+
