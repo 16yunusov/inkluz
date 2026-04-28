@@ -1,0 +1,15 @@
+{
+  "name": "mutaxasis-ishchilar",
+  "version": "1.0.0",
+  "description": "Mutaxasis ishchilar — Market sayti",
+  "scripts": {
+    "copy": "node scripts/copy-frontend.js",
+    "build": "npm run copy",
+    "install:backend": "cd backend && npm install",
+    "start": "npm run copy && node backend/server.js",
+    "backend": "cd backend && npm start"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

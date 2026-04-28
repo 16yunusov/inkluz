@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="uz" id="htmlTheme" data-theme="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutaxasis ishchilar — Xaridor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="location-bar">
+            <div class="container">
+                <div class="theme-toggle">
+                    <button class="theme-btn active" id="themeLight" title="Yorug' mavzu">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <span>Quyosh</span>
+                    </button>
+                    <button class="theme-btn" id="themeDark" title="Qorong'u mavzu">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <span>Oy</span>
+                    </button>
+                </div>
+                <a href="foydalanuvchilar.html" class="foydalanuvchi-link" title="Foydalanuvchilar paneli">Foydalanuvchilar paneli</a>
+            </div>
+        </div>
+        <div class="search-bar">
+            <div class="container">
+                <div class="search-box">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                    <input type="text" id="searchInput" placeholder="Mahsulotlar qidirish">
+                </div>
+                <button class="heart-btn" id="headerFavBtn" title="Yoqtirganlar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main view-home" id="viewHome">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Foydali fevral</h2>
+                <button type="button" class="section-add-btn" id="addProductSectionBtn">+ Qo'shish</button>
+            </div>
+            <div class="products-scroll">
+                <div class="products-row" id="productsGrid"></div>
+            </div>
+        </div>
+    </main>
+
+    <main class="catalog-view" id="viewCatalog" style="display: none;">
+        <div class="catalog-hero">
+            <div class="catalog-hero-bg"></div>
+            <div class="container catalog-hero-content">
+                <h1 class="catalog-title">Katalog</h1>
+                <p class="catalog-subtitle">11 ta hunar turkumi</p>
+                <div style="margin-top:16px">
+                    <input type="text" id="catalogSearch" placeholder="Turkum yoki mahsulot qidirish" class="catalog-search">
+                </div>
+            </div>
+        </div>
+        <div class="catalog-body">
+            <div class="container">
+                <div id="catalogSearchProducts" class="catalog-search-results" style="display: none;">
+                    <div class="catalog-section-header">
+                        <h3 class="catalog-section-title">Qidiruv natijalari</h3>
+                        <button class="add-product-catalog-btn" id="addProductCatalogSearchBtn">+ Mahsulot qo'shish</button>
+                    </div>
+                    <div class="catalog-products-grid" id="catalogProductsGrid"></div>
+                    <p class="catalog-products-empty" id="catalogProductsEmpty" style="display: none;">Topilmadi</p>
+                </div>
+                <div class="catalog-section" id="catalogCategoriesWrap">
+                    <div class="catalog-section-header">
+                        <h2 class="catalog-section-title">Barcha turkumlar</h2>
+                        <button class="add-product-catalog-btn" id="addProductCatalogBtn">+ Mahsulot qo'shish</button>
+                    </div>
+                    <div class="catalog-grid" id="catalogCategories"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="main view-favorites" id="viewFavorites" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Yoqtirgan mahsulotlaringiz</h2>
+            <div class="category-products category-products-enhanced" id="favoritesGrid"></div>
+            <p class="favorites-empty" id="favoritesEmpty" style="display: none;">Yoqtirgan mahsulotlar yo'q</p>
+        </div>
+    </main>
+
+    <main class="main view-tezkor" id="viewTezkor" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Tezkor</h2>
+            <p class="section-subtitle" id="tezkorStats">Bugun 0 ta buyurtma</p>
+            <div class="orders-list" id="tezkorOrdersList"></div>
+            <p class="orders-empty" id="tezkorEmpty" style="display: none;">Bugungi buyurtmalar yo'q</p>
+        </div>
+    </main>
+
+    <main class="main view-profil" id="viewProfil" style="display: none;">
+        <div class="container">
+            <div class="profil-wrap" id="profilWrap">
+                <!-- Akaunt yo'q — yaratish formasi -->
+                <div class="profil-create-block" id="profilCreateBlock">
+                    <div class="profil-create-card">
+                        <div class="profil-create-icon">👤</div>
+                        <h2 class="profil-create-title">Akaunt yaratish</h2>
+                        <p class="profil-create-desc">Mahsulot qo'shish va yaratganlaringizni saqlash uchun hisob yarating</p>
+                        <form id="createAccountForm" class="profil-create-form">
+                            <div class="profil-field">
+                                <label>Ism</label>
+                                <input type="text" id="accountIsm" required placeholder="Ismingiz">
+                            </div>
+                            <div class="profil-field">
+                                <label>Familya</label>
+                                <input type="text" id="accountFamilya" required placeholder="Familyangiz">
+                            </div>
+                            <div class="profil-field">
+                                <label>Telefon raqam</label>
+                                <input type="tel" id="accountPhone" required placeholder="+998 90 123 45 67">
+                            </div>
+                            <div class="profil-field">
+                                <label>Nickname</label>
+                                <input type="text" id="accountNickname" required placeholder="@username (3+ belgi)" minlength="3">
+                            </div>
+                            <p class="profil-error" id="profilCreateError" style="display:none"></p>
+                            <button type="submit" class="profil-submit-btn">Akaunt yaratish</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Akaunt bor — ma'lumotlar va mahsulotlar -->
+                <div class="profil-logged-block" id="profilLoggedBlock" style="display:none">
+                    <div class="profil-user-card">
+                        <div class="profil-avatar" id="profilAvatar">👤</div>
+                        <div class="profil-user-info">
+                            <h2 class="profil-user-name" id="profilUserName"></h2>
+                            <p class="profil-user-nickname" id="profilUserNickname"></p>
+                            <p class="profil-user-phone" id="profilUserPhone"></p>
+                            <div class="profil-stats">
+                                <span class="profil-stat"><span class="profil-stat-num" id="profilPostCount">0</span><span class="profil-stat-label">Post</span></span>
+                                <span class="profil-stat"><span class="profil-stat-num" id="profilObunachiCount">0</span><span class="profil-stat-label">Obunachi</span></span>
+                                <span class="profil-stat"><span class="profil-stat-num" id="profilFollowingCount">0</span><span class="profil-stat-label">Following</span></span>
+                            </div>
+                        </div>
+                        <button type="button" class="profil-logout-btn" id="profilLogoutBtn">Chiqish</button>
+                    </div>
+                    <div class="profil-actions">
+                        <button type="button" class="profil-add-btn" id="profilAddProductBtn">
+                            <span class="profil-add-icon">+</span>
+                            <span>Mahsulot qo'shish</span>
+                        </button>
+                    </div>
+                    <div class="profil-products-section">
+                        <h3 class="profil-products-title">Yaratgan mahsulotlarim</h3>
+                        <div class="profil-products-grid" id="profilMyProducts"></div>
+                        <p class="profil-products-empty" id="profilProductsEmpty" style="display:none">Hali mahsulot qo'shilmagan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="category-view" id="viewCategory" style="display: none;">
+        <div class="container">
+            <button class="back-btn" id="backToCatalog">← Katalogga qaytish</button>
+            <div class="category-header">
+                <h2 class="category-title" id="categoryTitle"></h2>
+                <span class="category-count" id="categoryCount"></span>
+                <button class="add-product-category-btn" id="addProductCategoryBtn" style="margin-left:auto">+ Mahsulot qo'shish</button>
+            </div>
+            <div class="category-top-bar" id="categoryTopBar" style="display: none;">
+                <input type="text" id="categorySearch" placeholder="Kategoriyada qidirish" class="category-search-input">
+                <div class="category-sort-filters" id="categorySortFilters" style="display: none;">
+                    <div class="filter-dropdown-wrap">
+                        <button class="sort-filter-btn" data-filter="rang">Rang</button>
+                        <div class="filter-dropdown" id="filterRang" style="display: none;"></div>
+                    </div>
+                    <div class="filter-dropdown-wrap">
+                        <button class="sort-filter-btn" data-filter="brend">Brend</button>
+                        <div class="filter-dropdown" id="filterBrend" style="display: none;"></div>
+                    </div>
+                    <div class="filter-dropdown-wrap">
+                        <button class="sort-filter-btn" data-filter="narx">Narx</button>
+                        <div class="filter-dropdown" id="filterNarx" style="display: none;">
+                            <button class="filter-option" data-value="">Hammasi</button>
+                            <button class="filter-option" data-value="narx-osh">Oshib boradi</button>
+                            <button class="filter-option" data-value="narx-kam">Kamayib boradi</button>
+                            <button class="filter-option" data-value="baho">Baho bo'yicha</button>
+                        </div>
+                    </div>
+                    <div class="filter-dropdown-wrap">
+                        <button class="sort-filter-btn" data-filter="ishlab">Ishlab chiqarilgan joyi</button>
+                        <div class="filter-dropdown" id="filterIshlab" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="category-sub-panels" id="categorySubPanels" style="display: none;">
+                <div class="sub-panels-scroll" id="subPanelsScroll"></div>
+            </div>
+            <div class="category-products" id="categoryProducts"></div>
+        </div>
+    </main>
+
+    <div class="main-spacer"></div>
+
+    <!-- Savat sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Savat</h3>
+            <button class="cart-close" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-body">
+            <div id="cartItems"></div>
+            <p class="cart-empty" id="cartEmpty" style="display: none;">Savat bo'sh</p>
+        </div>
+    </aside>
+
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-view="home"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span>Bosh sahifa</span></a>
+        <a href="#" class="nav-item" data-view="catalog"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg><span>Katalog</span></a>
+        <a href="#" class="nav-item" id="bottomCartBtn"><span class="nav-cart-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg><span class="nav-cart-count" id="bottomCartCount">0</span></span><span>Savat</span></a>
+        <a href="#" class="nav-item" data-view="favorites"><span class="nav-cart-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg><span class="nav-cart-count" id="bottomFavCount" style="display:none">0</span></span><span>Yoqtirganlar</span></a>
+        <a href="#" class="nav-item" data-view="tezkor"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>Tezkor</span></a>
+        <a href="#" class="nav-item" data-view="profil"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>Profil</span></a>
+    </nav>
+
+    <!-- Mahsulot qo'shish modali -->
+    <div class="add-product-modal-overlay" id="addProductModal">
+        <div class="add-product-modal-content">
+            <div class="add-product-modal-header">
+                <h3>Mahsulot qo'shish</h3>
+                <button class="add-product-close" id="closeAddProduct">&times;</button>
+            </div>
+            <form id="addProductForm">
+                <div class="add-product-field product-images-field">
+                    <label>Rasmlar</label>
+                    <div class="product-image-picker-wrap">
+                        <label class="product-image-picker" id="productImagePicker" for="productImageFile">
+                            <input type="file" id="productImageFile" accept="image/*" multiple style="display:none">
+                            <span class="product-image-picker-btn" id="productImagePickerBtn">
+                                <span class="product-image-picker-icon">📷</span>
+                                <span>Galeriyadan 3 ta rasm tanlang</span>
+                            </span>
+                        </label>
+                        <div class="product-image-previews" id="productImagePreviews"></div>
+                    </div>
+                    <p class="product-image-url-hint">yoki URL kiriting:</p>
+                    <input type="text" id="productImage" placeholder="Rasm 1 URL..." class="product-image-url-input">
+                    <input type="text" id="productImage2" placeholder="Rasm 2 URL..." class="product-image-url-input">
+                    <input type="text" id="productImage3" placeholder="Rasm 3 URL..." class="product-image-url-input">
+                </div>
+                <div class="add-product-field">
+                    <label>Nimaligi</label>
+                    <input type="text" id="productName" required placeholder="Mahsulot nomi yoki tavsifi">
+                </div>
+                <div class="add-product-field">
+                    <label>Telefon raqami</label>
+                    <input type="tel" id="productPhone" required placeholder="+998 90 123 45 67">
+                </div>
+                <div class="add-product-field">
+                    <label>Kim qilgani</label>
+                    <input type="text" id="productOwnerName" required placeholder="Hunarmand ismi">
+                </div>
+                <div class="add-product-field">
+                    <label>Turkum</label>
+                    <select id="productCategory" required>
+                        <option value="">Tanlang</option>
+                    </select>
+                </div>
+                <div class="add-product-field" id="formSubcategory" style="display: none;">
+                    <label>Pastki turkum</label>
+                    <select id="productSubcategory">
+                        <option value="">Tanlang</option>
+                    </select>
+                </div>
+                <button type="submit" class="checkout-btn">Qo'shish</button>
+            </form>
+        </div>
+    </div>
+
+    <button class="add-product-header-btn" id="addProductHeaderBtn" title="Mahsulot qo'shish" style="position:fixed;bottom:100px;right:20px;z-index:200;border-radius:50%;width:56px;height:56px;font-size:1.5rem;padding:0">+</button>
+
+    <!-- Mahsulot o'chirish modali -->
+    <div class="delete-product-modal-overlay" id="deleteProductModal">
+        <div class="delete-product-modal">
+            <div class="delete-product-modal-icon">🗑️</div>
+            <h3 class="delete-product-modal-title" id="deleteModalTitle">Tanlash</h3>
+            <p class="delete-product-modal-desc" id="deleteModalDesc">O'chirish uchun avval tanlang</p>
+            <div class="delete-product-modal-buttons">
+                <button type="button" class="delete-product-btn delete-product-btn-tanlash" id="deleteProductTanlash">Tanlash</button>
+                <button type="button" class="delete-product-btn delete-product-btn-ochirish" id="deleteProductOchirish" disabled>O'chirish</button>
+                <button type="button" class="delete-product-btn delete-product-btn-bekor" id="deleteProductBekor">Bekor qilish</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

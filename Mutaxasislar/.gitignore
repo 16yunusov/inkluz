@@ -1,0 +1,20 @@
+# Tizim fayllari
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Log va vaqtinchalik
+*.log
+*.tmp
+.cache/
+
+# Node
+node_modules/
+backend/public/
+backend/data/

@@ -1,0 +1,12 @@
+# Render.com — Bitta server (frontend + backend)
+# https://render.com — New → Web Service → Repo ulang
+
+services:
+  - type: web
+    name: mutaxasis-ishchilar
+    env: node
+    buildCommand: npm run install:backend && npm run copy
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production

@@ -1,0 +1,4 @@
+# Netlify — Internetga joylash
+
+[build]
+  publish = "."
