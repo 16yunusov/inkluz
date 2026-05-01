@@ -1,0 +1,24 @@
+name: restaurant_mobile
+description: Cross-platform mobile app for Gourmet Express.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.5
+  http: ^1.1.0
+  provider: ^6.0.5
+  geolocator: ^10.0.1
+  google_fonts: ^5.1.0
+  flutter_staggered_animations: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true

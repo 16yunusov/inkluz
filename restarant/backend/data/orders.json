@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "1777612080123",
+    "name": "Muhammadali",
+    "phone": "+998 95 573 62 32",
+    "location": "Shofirkon tumani, sabzikor ",
+    "items": [
+      {
+        "id": 1,
+        "name": "Truffle Burger",
+        "price": 15,
+        "quantity": 2
+      },
+      {
+        "id": 2,
+        "name": "Margarita Pizza",
+        "price": 12,
+        "quantity": 1
+      }
+    ],
+    "totalPrice": 42,
+    "status": "pending",
+    "createdAt": "2026-05-01T05:08:00.123Z"
+  }
+]
