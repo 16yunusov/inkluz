@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osh Markazi - Eng Mazali Milliy Taomlar</title>
+    <meta name="description" content="Osh Markazi - Eng mazali milliy taomlar, dastavka va joy band qilish xizmati.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <span class="gold-text">Osh</span> Markazi
+            </a>
+            <div class="nav-links">
+                <a href="#home">Asosiy</a>
+                <a href="#menu">Menu</a>
+                <a href="#booking">Band qilish</a>
+                <a href="#delivery">Dastavka</a>
+                <a href="#contact">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button id="track-order-btn" class="btn btn-outline btn-sm" style="margin-right: 10px;">
+                    <i data-lucide="package-search" style="width: 14px; margin-right: 5px;"></i> Kuzatish
+                </button>
+                <button id="theme-toggle" class="icon-btn">
+                    <i data-lucide="moon"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-links">
+            <a href="#home">Asosiy</a>
+            <a href="#menu">Menu</a>
+            <a href="#booking">Band qilish</a>
+            <a href="#delivery">Dastavka</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="fade-in">Eng Mazali <span class="gold-text">Osh Markazi</span></h1>
+                <p class="fade-in delay-1">Haqiqiy milliy ta'm, zamonaviy xizmat va premium atmosfera. Bizning osh - sizning shodligingiz.</p>
+                <div class="hero-btns fade-in delay-2">
+                    <a href="#booking" class="btn btn-primary">Joy band qilish</a>
+                    <a href="#delivery" class="btn btn-secondary">Dastavka buyurtma</a>
+                </div>
+            </div>
+            <div class="hero-image fade-in delay-3">
+                <img src="osh_markazi_hero_1778667347056.png" alt="Eng mazali osh">
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Bizning Menu</h2>
+                <div class="menu-filters">
+                    <button class="filter-btn active" data-filter="all">Hammasi</button>
+                    <button class="filter-btn" data-filter="osh">Osh</button>
+                    <button class="filter-btn" data-filter="kabob">Kabob</button>
+                    <button class="filter-btn" data-filter="salat">Salat</button>
+                    <button class="filter-btn" data-filter="ichimlik">Ichimliklar</button>
+                </div>
+            </div>
+
+            <div id="menu-grid" class="menu-grid">
+                <!-- Mahsulotlar backenddan dinamik yuklanadi -->
+                <p style="text-align: center; grid-column: 1/-1; opacity: 0.6;">Yuklanmoqda...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking-section section-padding">
+        <div class="container">
+            <div class="booking-grid">
+                <div class="booking-info">
+                    <h2 class="section-title">Joy band qilish</h2>
+                    <p>O'zingiz va yaqinlaringiz uchun oldindan joy band qiling va navbat kutishdan xalos bo'ling.</p>
+                    <ul class="info-list">
+                        <li><i data-lucide="check-circle"></i> Premium atmosfera</li>
+                        <li><i data-lucide="check-circle"></i> Milliy musiqa</li>
+                        <li><i data-lucide="check-circle"></i> Yuqori sifatli xizmat</li>
+                    </ul>
+                </div>
+                <div class="booking-form-container">
+                    <form id="booking-form" class="form-card">
+                        <div class="form-group">
+                            <label>Ismingiz</label>
+                            <input type="text" name="ism" placeholder="Ismingizni kiriting" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon raqamingiz</label>
+                            <input type="tel" name="telefonRaqam" placeholder="+998 90 123 45 67" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Kishilar soni</label>
+                                <input type="number" name="odamSoni" min="1" max="50" placeholder="2" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Sana va vaqt</label>
+                                <input type="datetime-local" name="sana_vaqt" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">Band qilish</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="delivery" class="delivery-section section-padding">
+        <div class="container">
+            <div class="delivery-grid">
+                <div class="delivery-form-container order-2 order-md-1">
+                    <form id="delivery-form" class="form-card">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ismingiz</label>
+                                <input type="text" name="name" placeholder="Ali Valiyev" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Telefon raqam</label>
+                                <input type="tel" name="phone" placeholder="+998901234567" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Manzil</label>
+                            <input type="text" name="address" placeholder="Toshkent shahar, Yunusobod..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Izoh (optional)</label>
+                            <textarea name="comment" placeholder="Achchiqroq bo'lsin..." style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1);"></textarea>
+                        </div>
+                        <div id="order-summary" style="margin-bottom: 20px; padding: 20px; background: rgba(0,0,0,0.02); border-radius: 15px; display: none;">
+                            <h4 style="margin-bottom: 10px;">Buyurtma xulosasi:</h4>
+                            <div id="summary-items"></div>
+                            <hr style="margin: 10px 0; border: none; border-top: 1px solid rgba(0,0,0,0.1);">
+                            <div style="display: flex; justify-content: space-between; font-weight: 700;">
+                                <span>Jami:</span>
+                                <span id="summary-total">0 so'm</span>
+                            </div>
+                        </div>
+                        <button type="submit" id="submit-order-btn" class="btn btn-secondary full-width" disabled>Savat bo'sh</button>
+                    </form>
+                </div>
+                <div class="delivery-info order-1 order-md-2">
+                    <h2 class="section-title">Dastavka xizmati</h2>
+                    <p>Issiqgina osh va boshqa milliy taomlarimizni 45 daqiqa ichida manzilingizga yetkazamiz.</p>
+                    <div class="delivery-stats">
+                        <div class="stat">
+                            <span class="stat-value">45 m</span>
+                            <span class="stat-label">O'rtacha vaqt</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">Bepul</span>
+                            <span class="stat-label">50k dan yuqori</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">Kontakt</h2>
+            <div class="contact-grid">
+                <div class="contact-info-cards">
+                    <div class="info-card">
+                        <i data-lucide="phone"></i>
+                        <h3>Telefon</h3>
+                        <p>+998 71 123 45 67</p>
+                    </div>
+                    <div class="info-card">
+                        <i data-lucide="send"></i>
+                        <h3>Telegram</h3>
+                        <p>@oshmarkazi_bot</p>
+                    </div>
+                    <div class="info-card">
+                        <i data-lucide="instagram"></i>
+                        <h3>Instagram</h3>
+                        <p>@oshmarkazi_official</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <!-- Google Map Placeholder -->
+                    <div class="map-placeholder">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d1!2d69.2400734!3d41.2994958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb3314f1!2sToshkent!5e0!3m2!1suz!2suz!4v1620000000000!5m2!1suz!2suz" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="gold-text">Osh</span> Markazi
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Asosiy</a>
+                    <a href="#menu">Menu</a>
+                    <a href="/admin" class="admin-link">Admin Panel</a>
+                </div>
+                <p>&copy; 2026 Osh Markazi. Barcha huquqlar himoyalangan.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Cart Button -->
+    <div id="open-cart" class="floating-cart">
+        <i data-lucide="shopping-cart"></i>
+        <span>Savat</span>
+        <span id="cart-count-badge" class="cart-badge">0</span>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-overlay" class="cart-overlay"></div>
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Savat</h3>
+            <button id="close-cart" class="icon-btn"><i data-lucide="x"></i></button>
+        </div>
+        <div id="cart-items-container" class="cart-items">
+            <!-- Savatdagi mahsulotlar -->
+            <p style="text-align: center; opacity: 0.5; margin-top: 50px;">Savat bo'sh</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Jami:</span>
+                <span id="cart-total-price">0 so'm</span>
+            </div>
+            <button class="btn btn-primary full-width" onclick="scrollToCheckout()">Buyurtma berish</button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/998901234567" class="whatsapp-btn" target="_blank">
+        <i data-lucide="message-circle"></i>
+    </a>
+
+
+    <!-- Status Check Modal -->
+    <div id="status-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="modal-content" style="background: var(--card-bg); padding: 30px; border-radius: 24px; width: 95%; max-width: 400px; position: relative;">
+            <button id="close-status" style="position: absolute; right: 20px; top: 20px; border: none; background: none; cursor: pointer;"><i data-lucide="x"></i></button>
+            <h3 style="margin-bottom: 20px;">Buyurtmani kuzatish</h3>
+            <div class="form-group">
+                <label>Telefon raqamingiz</label>
+                <input type="tel" id="track-phone" placeholder="+998901234567" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 15px;">
+            </div>
+            <button id="do-track" class="btn btn-primary full-width">Tekshirish</button>
+            <div id="track-result" style="margin-top: 20px; display: none;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "osh-markazi-root",
+  "version": "1.0.0",
+  "description": "Root management for Osh Markazi",
+  "scripts": {
+    "start": "npm start --prefix backend",
+    "dev": "npm run dev --prefix backend",
+    "install-all": "npm install --prefix backend"
+  }
+}

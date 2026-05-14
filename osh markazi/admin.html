@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osh Markazi - Premium Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --sidebar-width: 280px;
+        }
+        body { background: var(--off-white); }
+        
+        .dashboard-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--dark);
+            color: white;
+            padding: 30px 20px;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+        .sidebar .logo { margin-bottom: 50px; font-size: 1.5rem; color: white; }
+        .nav-menu { flex-grow: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary-gold);
+        }
+        .logout-btn {
+            margin-top: auto;
+            color: #eb5757;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            padding: 40px;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary-gold);
+        }
+        .stat-info h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 5px; }
+        .stat-info p { color: var(--text-light); font-size: 0.9rem; }
+
+        /* Content Sections */
+        .content-section { display: none; }
+        .content-section.active { display: block; animation: fadeIn 0.4s ease; }
+
+        .admin-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        /* Tables */
+        .table-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        th { color: var(--text-light); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
+        
+        /* Badges & Actions */
+        .badge { padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+        .badge-pending { background: rgba(212, 175, 55, 0.1); color: var(--primary-gold); }
+        .badge-success { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+        .badge-info { background: rgba(45, 156, 219, 0.1); color: #2d9cdb; }
+        .badge-danger { background: rgba(235, 87, 87, 0.1); color: #eb5757; }
+
+        .action-btns { display: flex; gap: 8px; }
+        .btn-icon { width: 32px; height: 32px; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .btn-edit { background: rgba(45, 156, 219, 0.1); color: #2d9cdb; }
+        .btn-delete { background: rgba(235, 87, 87, 0.1); color: #eb5757; }
+        .btn-check { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .product-img-preview {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 992px) {
+            .sidebar { width: 80px; padding: 30px 10px; }
+            .sidebar .logo, .sidebar span { display: none; }
+            .main-content { margin-left: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo"><b>Osh</b> Markazi</div>
+            <nav class="nav-menu">
+                <div class="nav-item active" onclick="showSection('dashboard')">
+                    <i data-lucide="layout-dashboard"></i> <span>Dashboard</span>
+                </div>
+                <div class="nav-item" onclick="showSection('products')">
+                    <i data-lucide="utensils"></i> <span>Mahsulotlar</span>
+                </div>
+                <div class="nav-item" onclick="showSection('orders')">
+                    <i data-lucide="shopping-bag"></i> <span>Buyurtmalar</span>
+                </div>
+                <div class="nav-item" onclick="showSection('reservations')">
+                    <i data-lucide="calendar"></i> <span>Rezervlar</span>
+                </div>
+            </nav>
+            <div class="nav-item logout-btn" onclick="logout()">
+                <i data-lucide="log-out"></i> <span>Chiqish</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="top-bar">
+                <h1 id="section-title">Dashboard</h1>
+                <div class="user-profile">
+                    <b>Admin Panel</b>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="package"></i></div>
+                        <div class="stat-info"><h3 id="stat-products">0</h3><p>Mahsulotlar</p></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="shopping-cart"></i></div>
+                        <div class="stat-info"><h3 id="stat-orders">0</h3><p>Buyurtmalar</p></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="users"></i></div>
+                        <div class="stat-info"><h3 id="stat-reservations">0</h3><p>Rezervlar</p></div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Yaqindagi Buyurtmalar</h2>
+                        <button class="btn btn-primary btn-sm" onclick="showSection('orders')">Hammasi</button>
+                    </div>
+                    <div class="table-container">
+                        <table id="recent-orders-table">
+                            <thead>
+                                <tr><th>ID</th><th>Mijoz</th><th>Taom</th><th>Narx</th><th>Status</th></tr>
+                            </thead>
+                            <tbody id="recent-orders-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products-section" class="content-section">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Mahsulotlar Boshqaruvi</h2>
+                        <button class="btn btn-primary" onclick="openProductModal()">+ Yangi qo'shish</button>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>Rasm</th><th>Nomi</th><th>Kategoriya</th><th>Narxi</th><th>Amallar</th></tr>
+                            </thead>
+                            <tbody id="products-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders-section" class="content-section">
+                <div class="admin-card">
+                    <h2>Barcha Buyurtmalar</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>ID</th><th>Mijoz</th><th>Telefon</th><th>Manzil</th><th>Buyurtma</th><th>Status</th><th>Amallar</th></tr>
+                            </thead>
+                            <tbody id="orders-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reservations Section -->
+            <section id="reservations-section" class="content-section">
+                <div class="admin-card">
+                    <h2>Stol Band Qilishlar</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>Mijoz</th><th>Telefon</th><th>Soni</th><th>Vaqt</th><th>Status</th><th>Amallar</th></tr>
+                            </thead>
+                            <tbody id="reservations-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title">Yangi mahsulot</h2>
+            <form id="product-form" style="margin-top: 20px;">
+                <input type="hidden" id="edit-id">
+                <div class="form-group">
+                    <label>Nomi</label>
+                    <input type="text" id="p-name" placeholder="Masalan: To'y oshi" required>
+                </div>
+                <div class="form-group">
+                    <label>Narxi (so'm)</label>
+                    <input type="number" id="p-price" placeholder="35000" required>
+                </div>
+                <div class="form-group">
+                    <label>Kategoriya</label>
+                    <select id="p-category" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd;">
+                        <option value="osh">Osh</option>
+                        <option value="kabob">Kabob</option>
+                        <option value="salat">Salat</option>
+                        <option value="ichimlik">Ichimlik</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Rasm URL (Yoki rasm nomi)</label>
+                    <input type="text" id="p-image" placeholder="osh.png" required>
+                </div>
+                <div class="form-group">
+                    <label>Tavsif</label>
+                    <textarea id="p-desc" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd;" rows="3"></textarea>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" class="btn" style="flex: 1; background: #ddd;" onclick="closeModal()">Bekor qilish</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Saqlash</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const token = localStorage.getItem('adminToken');
+        if (!token) window.location.href = 'login.html';
+
+        lucide.createIcons();
+
+        function showSection(name) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            
+            document.getElementById(`${name}-section`).classList.add('active');
+            event?.currentTarget?.classList?.add('active');
+            document.getElementById('section-title').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+            
+            loadData(name);
+        }
+
+        async function loadData(section = 'dashboard') {
+            const headers = { 'Authorization': `Bearer ${token}` };
+            
+            try {
+                // Products
+                const pRes = await fetch('http://localhost:5000/api/products');
+                const pData = await pRes.json();
+                document.getElementById('stat-products').textContent = pData.count;
+                renderProducts(pData.data);
+
+                // Orders
+                const oRes = await fetch('http://localhost:5000/api/orders', { headers });
+                const oData = await oRes.json();
+                document.getElementById('stat-orders').textContent = oData.count || 0;
+                renderOrders(oData.data);
+                if (section === 'dashboard') renderRecentOrders(oData.data);
+
+                // Reservations
+                const rRes = await fetch('http://localhost:5000/api/reservations', { headers });
+                const rData = await rRes.json();
+                document.getElementById('stat-reservations').textContent = rData.count || 0;
+                renderReservations(rData.data);
+
+            } catch (err) {
+                console.error(err);
+                if (err.status === 401) logout();
+            }
+        }
+
+        function renderProducts(data) {
+            const tbody = document.getElementById('products-table-body');
+            tbody.innerHTML = data.map(p => `
+                <tr>
+                    <td><img src="${p.rasm}" class="product-img-preview"></td>
+                    <td><b>${p.nomi}</b></td>
+                    <td>${p.kategoriya}</td>
+                    <td>${p.narxi.toLocaleString()} so'm</td>
+                    <td>
+                        <div class="action-btns">
+                            <button class="btn-icon btn-edit" onclick="editProduct(${p.id})"><i data-lucide="edit-2"></i></button>
+                            <button class="btn-icon btn-delete" onclick="deleteProduct(${p.id})"><i data-lucide="trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function renderOrders(data) {
+            const tbody = document.getElementById('orders-table-body');
+            if (!tbody) return;
+            tbody.innerHTML = data.map(o => `
+                <tr>
+                    <td>#${o.id}</td>
+                    <td><b>${o.name}</b></td>
+                    <td>${o.phone}</td>
+                    <td>${o.address}</td>
+                    <td>
+                        <div class="order-details-mini" style="max-width: 250px;">
+                            ${o.items.map(item => `
+                                <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding: 5px 0;">
+                                    <img src="${item.rasm || 'default.png'}" style="width: 30px; height: 30px; border-radius: 5px; object-fit: cover;">
+                                    <span>${item.name} <b>x${item.quantity}</b></span>
+                                </div>
+                            `).join('')}
+                            <div style="margin-top: 8px; color: var(--primary-gold); font-weight: 700; font-size: 1rem;">
+                                Jami: ${o.totalPrice.toLocaleString()} so'm
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge badge-${o.status}">${o.status}</span></td>
+                    <td>
+                        <select onchange="updateStatus('orders', ${o.id}, this.value)" class="btn-sm" style="padding: 5px; border-radius: 8px; border: 1px solid #ddd;">
+                            <option value="pending" ${o.status==='pending'?'selected':''}>Kutilmoqda</option>
+                            <option value="accepted" ${o.status==='accepted'?'selected':''}>Qabul qilindi</option>
+                            <option value="ready" ${o.status==='ready'?'selected':''}>Tayyorlanmoqda</option>
+                            <option value="delivering" ${o.status==='delivering'?'selected':''}>Yetkazilmoqda</option>
+                            <option value="delivered" ${o.status==='delivered'?'selected':''}>Yetkazildi</option>
+                        </select>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderReservations(data) {
+            const tbody = document.getElementById('reservations-table-body');
+            if (!tbody) return;
+            tbody.innerHTML = data.map(r => `
+                <tr>
+                    <td>${r.ism}</td>
+                    <td>${r.telefonRaqam}</td>
+                    <td>${r.odamSoni} kishi</td>
+                    <td>${r.sana} | ${r.vaqt}</td>
+                    <td><span class="badge badge-${r.status}">${r.status}</span></td>
+                    <td>
+                        <button class="btn-icon btn-check" onclick="updateStatus('reservations', ${r.id}, 'accepted')"><i data-lucide="check"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        async function updateStatus(type, id, status) {
+            await fetch(`http://localhost:5000/api/${type}/${id}/status`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                body: JSON.stringify({ status })
+            });
+            loadData();
+        }
+
+        // Product CRUD Logic
+        async function deleteProduct(id) {
+            if (confirm("Haqiqatan ham o'chirmoqchimisiz?")) {
+                await fetch(`http://localhost:5000/api/products/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                loadData();
+            }
+        }
+
+        const modal = document.getElementById('product-modal');
+        function openProductModal() {
+            document.getElementById('product-form').reset();
+            document.getElementById('edit-id').value = '';
+            document.getElementById('modal-title').textContent = "Yangi mahsulot";
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() { modal.style.display = 'none'; }
+
+        document.getElementById('product-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('edit-id').value;
+            const data = {
+                nomi: document.getElementById('p-name').value,
+                narxi: document.getElementById('p-price').value,
+                kategoriya: document.getElementById('p-category').value,
+                rasm: document.getElementById('p-image').value,
+                description: document.getElementById('p-desc').value
+            };
+
+            const url = id ? `http://localhost:5000/api/products/${id}` : `http://localhost:5000/api/products`;
+            const method = id ? 'PUT' : 'POST';
+
+            await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                body: JSON.stringify(data)
+            });
+
+            closeModal();
+            loadData();
+        });
+
+        async function editProduct(id) {
+            const res = await fetch('http://localhost:5000/api/products');
+            const data = await res.json();
+            const p = data.data.find(x => x.id === id);
+            
+            document.getElementById('edit-id').value = p.id;
+            document.getElementById('p-name').value = p.nomi;
+            document.getElementById('p-price').value = p.narxi;
+            document.getElementById('p-category').value = p.kategoriya;
+            document.getElementById('p-image').value = p.rasm;
+            document.getElementById('p-desc').value = p.description;
+            
+            document.getElementById('modal-title').textContent = "Tahrirlash";
+            modal.style.display = 'flex';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminToken');
+            window.location.href = 'login.html';
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
